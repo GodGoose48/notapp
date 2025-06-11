@@ -1,0 +1,12 @@
+{
+    "require": {
+        "ratchet/ratchet": "^0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

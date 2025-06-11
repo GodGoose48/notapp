@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('/ltw-noteapp-final/frontend/assets/images/reg_for.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 25px 40px 10px;
+}
+
+.logo-bar img {
+  height: 100px;
+  margin-top: -20px;
+  margin-left: -30px;
+  z-index: 2;
+}
+
+.logo-bar .line {
+  flex-grow: 1;
+  height: 3px;
+  background-color: white;
+  margin-left: 15px;
+}
+
+.register-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-container h2 {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 42px;
+  color: #3b1f0f;
+  margin-bottom: 8px;
+  font-weight: normal;
+}
+
+.register-container .subtitle {
+  font-size: 16px;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #9b5e35;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #7b4a27;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.message.success {
+  color: green;
+}
+
+.message.error {
+  color: red;
+}
+
+.links {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.links a {
+  color: #9b5e35;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* OTP Section Styling */
+#otpSection {
+  background-color: #f8f9fa;
+  border: 2px solid #9b5e35;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  animation: slideDown 0.3s ease-out;
+}
+
+#otpSection input {
+  background-color: white;
+  border: 2px solid #9b5e35;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+#otpSection input:focus {
+  outline: none;
+  border-color: #7b4a27;
+  box-shadow: 0 0 0 3px rgba(155, 94, 53, 0.1);
+}
+
+#passwordSection {
+  background-color: #f0f8f0;
+  border: 2px solid #28a745;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-bar {
+    padding: 20px 20px 10px;
+  }
+
+  .logo-bar img {
+    height: 90px;
+    margin-left: -10px;
+  }
+
+  .register-container {
+    padding: 30px 20px;
+    margin-top: 10px;
+  }
+}

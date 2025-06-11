@@ -1,0 +1,922 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6f0e7;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #e2d8c3;
+  padding: 20px;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  margin-top: -40px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.search-bar {
+  background: #c8c2ae;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #9b5e35;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.nav-home:hover {
+  background-color: #82421e;
+}
+
+.nav-home img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 40px;
+  position: relative;
+}
+
+.title-input {
+  width: 100%;
+  font-size: 22px;
+  padding: 14px;
+  background: #f4dcc3;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.note-textarea {
+  width: 100%;
+  min-height: 300px;
+  resize: vertical;
+  padding: 20px;
+  font-size: 20px;
+  background: #cea689;
+  color: rgb(17, 10, 10);
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.note-textarea::placeholder {
+  color: #2b1616;
+}
+
+/* Labels section */
+label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+label input {
+  margin-right: 6px;
+}
+
+.attach-section {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.status {
+  font-style: italic;
+  color: green;
+  margin-top: 10px;
+}
+
+/* Note title + content (duplicate styles for consistency) */
+.note-title {
+  width: 100%;
+  padding: 16px;
+  font-size: 22px;
+  background: #f8ddc2;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.note-content {
+  width: 100%;
+  min-height: 280px;
+  font-size: 18px;
+  background: #d2a685;
+  color: rgba(61, 2, 2, 0);
+  border: none;
+  border-radius: 16px;
+  padding: 20px;
+  resize: vertical;
+}
+
+/* Options section */
+.options {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.options input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.options button {
+  margin-top: 12px;
+  padding: 8px 18px;
+  border: none;
+  background-color: #9b5e35;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  margin-top: 16px;
+  background-color: #a23;
+}
+
+/* ========== Image Display ========== */
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 180px;  
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.image-wrapper button {
+  margin-top: 6px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.note-textarea[contenteditable="true"] {
+  min-height: 300px;
+  background: #d2aa88;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 18px;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.toolbar button {
+  background-color: #fff;              
+  border: 2px solid #9b5e35;
+  color: #9b5e35;                      
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  font-weight: bold;
+}
+
+.toolbar button:hover {
+  background-color: #f1e0d0;           
+}
+
+.toolbar button.active {
+  background-color: #9b5e35;          
+  color: #fff;                         
+  box-shadow: inset 0 0 0 2px #7b4322;
+}
+
+/* Password Section */
+.password-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(155, 94, 53, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #9b5e35;
+}
+
+.password-section h4 {
+  margin-bottom: 10px;
+  color: #9b5e35;
+  font-size: 16px;
+}
+
+.password-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.password-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.password-btn:not(.disable) {
+  background-color: #9b5e35;
+  color: white;
+}
+
+.password-btn:not(.disable):hover {
+  background-color: #7b4322;
+  transform: translateY(-1px);
+}
+
+.password-btn.disable {
+  background-color: #dc3545;
+  color: white;
+}
+
+.password-btn.disable:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.password-btn.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.password-btn.delete:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.password-info {
+  font-style: italic;
+  color: #666;
+  margin: 0;
+}
+
+/* Password Dialog Styles */
+.password-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.password-dialog {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 350px;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.password-dialog h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.password-dialog input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.password-dialog input:focus {
+  outline: none;
+  border-color: #9b5e35;
+  box-shadow: 0 0 0 3px rgba(155, 94, 53, 0.1);
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.dialog-buttons button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.dialog-buttons button[type="submit"] {
+  background-color: #9b5e35;
+  color: white;
+}
+
+.dialog-buttons button[type="submit"]:hover {
+  background-color: #7b4322;
+  transform: translateY(-1px);
+}
+
+.dialog-buttons .cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.dialog-buttons .cancel-btn:hover {
+  background-color: #545b62;
+  transform: translateY(-1px);
+}
+
+.dialog-buttons .disable-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.dialog-buttons .disable-btn:hover {
+  background-color: #c82333;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 13px;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Success message styling */
+.success-message {
+  color: #155724;
+  font-size: 13px;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Disabled state for protected notes */
+.note-protected {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.note-protected::after {
+  content: "🔒 This note is password protected";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 100;
+}
+
+/* Apply user preferences */
+    :root {
+      --user-font-size: <?= $preferences['font_size'] ?>px;
+      --user-note-color: <?= $selectedNoteColor ?>;
+      --auto-save-delay: <?= $preferences['auto_save_delay'] ?>ms;
+    }
+
+    .note-content,
+    .note-textarea,
+    [contenteditable="true"] {
+      font-size: var(--user-font-size) !important;
+      background-color: var(--user-note-color) !important;
+    }
+
+    .note-title {
+      background-color: var(--user-note-color) !important;
+      font-size: calc(var(--user-font-size) + 4px) !important;
+    }
+
+    /* Password protection overlay */
+    .password-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(5px);
+    }
+
+    .password-prompt {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .password-prompt h2 {
+      margin-top: 0;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .password-prompt .lock-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #9b5e35;
+    }
+
+    .password-prompt input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .password-prompt input:focus {
+      outline: none;
+      border-color: #9b5e35;
+    }
+
+    .password-prompt .button-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .password-prompt button {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .password-prompt .unlock-btn {
+      background: #9b5e35;
+      color: white;
+    }
+
+    .password-prompt .unlock-btn:hover {
+      background: #7b4322;
+    }
+
+    .password-prompt .cancel-btn {
+      background: #6c757d;
+      color: white;
+    }
+
+    .password-prompt .cancel-btn:hover {
+      background: #545b62;
+    }
+
+    .password-error {
+      color: #dc3545;
+      margin-bottom: 15px;
+      padding: 8px;
+      background: #f8d7da;
+      border-radius: 4px;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Hide content when password protected */
+    .content-hidden {
+      filter: blur(10px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .warning-message {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .warning-message p {
+      margin: 5px 0;
+    }
+
+    .warning-message strong {
+      color: #b45309;
+    }
+
+/* Sharing Section */
+.sharing-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(155, 94, 53, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #9b5e35;
+}
+
+.sharing-section h4 {
+  margin-bottom: 10px;
+  color: #9b5e35;
+  font-size: 16px;
+}
+
+.sharing-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Sharing Modal Styles */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #9b5e35;
+  box-shadow: 0 0 0 3px rgba(155, 94, 53, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.form-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #9b5e35;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #7b4322;
+  transform: translateY(-1px);
+}
+
+.form-actions button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: #545b62;
+  transform: translateY(-1px);
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+}
+
+#shareResults {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+}
+
+.share-success {
+  color: #28a745;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  font-weight: 500;
+}
+
+.share-error {
+  color: #dc3545;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  font-weight: 500;
+}
+
+/* Current shares display */
+.current-shares {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.current-shares h4 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.share-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.share-user-info {
+  flex: 1;
+}
+
+.share-email {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.share-name {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.share-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.share-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.permission-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permission-read {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.permission-edit {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-edit {
+  background: #28a745;
+  color: white;
+}
+
+.btn-remove {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-remove:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.no-shares {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}

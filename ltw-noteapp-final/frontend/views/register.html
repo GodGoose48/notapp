@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Nốt</title>
+  <link rel="stylesheet" href="/ltw-noteapp-final/frontend/assets/css/register.css" />
+  <script src="/ltw-noteapp-final/frontend/assets/js/register.js" defer></script>
+</head>
+
+<body>
+  <div class="logo-bar">
+    <img src="/ltw-noteapp-final/frontend/assets/images/logo.png" alt="Nốt Logo" />
+  </div>
+
+  <div class="register-container">
+    <h2>Sign up</h2>
+    <div class="subtitle">Create your Nốt account.</div>
+
+    <form id="registerForm">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="display_name" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="password" name="confirm_password" placeholder="Confirm password" required />
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="message" id="registerMessage"></div>
+
+    <div class="links">
+      Already have an account? <a href="login.html">Sign in</a>
+    </div>
+  </div>
+</body>
+
+</html>

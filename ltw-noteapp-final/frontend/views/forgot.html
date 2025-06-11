@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Forgot Password - Nốt</title>
+  <link rel="stylesheet" href="/ltw-noteapp-final/frontend/assets/css/forgot.css" />
+  <script src="/ltw-noteapp-final/frontend/assets/js/forgot.js" defer></script>
+</head>
+
+<body>
+  <div class="logo-bar">
+    <img src="/ltw-noteapp-final/frontend/assets/images/logo.png" alt="Nốt" />
+    <div class="line"></div>
+  </div>
+
+  <div class="register-container">
+    <h2>Reset your Password</h2>
+    <div class="subtitle">Enter your email to receive an OTP code</div>
+
+    <form id="forgotForm">
+      <input type="email" name="email" id="email" placeholder="Enter your email" required />
+      <button type="button" id="sendOtpBtn">Send OTP</button>
+      <div id="otpSection" style="display: none;">
+        <p style="font-size: 14px; color: #666; margin-bottom: 15px; text-align: center;">
+          <strong>Check your email!</strong> Enter the 6-digit OTP code sent to your email address.
+        </p>
+        <input type="text" id="otpInput" placeholder="Enter 6-digit OTP code" maxlength="6" required />
+        <button type="button" id="verifyOtpBtn">Verify OTP</button>
+      </div>
+
+      <div id="passwordSection" style="display: none;">
+        <input type="password" name="new_password" id="new_password" placeholder="New password" required />
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm new password"
+          required />
+        <button type="submit">Reset Password</button>
+      </div>
+
+      <div class="message" id="forgotMessage"></div>
+    </form>
+
+    <div class="links">
+      <a href="login.html">Back to Login</a>
+    </div>
+  </div>
+</body>
+
+</html>
